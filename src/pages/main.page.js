@@ -1,8 +1,5 @@
-import BasePage from "./base.page";
+import BasePage from "./BasePage";
 
 export default class MainPage extends BasePage {
-    constructor(page) {
-        super(page);
-        this.page = page;
-    }
+
 }

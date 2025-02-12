@@ -1,7 +1,9 @@
-import Footer from "../components/footer.component";
-import Header from "../components/header.component";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export default class BasePage {
+    page;
+
     constructor(page) {
         this.page = page;
         this.header = new Header(page);

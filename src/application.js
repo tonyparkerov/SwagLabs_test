@@ -1,5 +1,5 @@
-import CartPage from "./pages/cart.page";
-import LoginPage from "./pages/login.page";
+import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/main.page";
 
 export default class Application {

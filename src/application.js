@@ -18,6 +18,10 @@ export default class Application {
         this.footer = new Footer(page, context);
     }
 
+    async getCookies(){
+        return await this.#context.cookies();
+    }
+
     async setUserCookies(userName) {
         await this.#context.addCookies([{
             name: 'session-username',

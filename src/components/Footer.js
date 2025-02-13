@@ -7,6 +7,7 @@ export default class Footer extends BaseComponent {
     #footerCopy = this.page.locator('div[data-test="footer-copy"]');
 
     async openSocialMedia(socialMediaName) {
+        const pagePromise = this.context.waitForEvent('page');
         switch (socialMediaName) {
             case 'twitter':
                 await this.#twitterLogo.click();
@@ -21,5 +22,11 @@ export default class Footer extends BaseComponent {
                 console.log('Wrong social media name given')
                 break;
         }
+        const newPage = await pagePromise;
+        return newPage;
+    }
+
+    async getFooterCopy() {
+        return this.#footerCopy;
     }
 }

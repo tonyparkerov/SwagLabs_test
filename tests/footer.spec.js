@@ -8,7 +8,7 @@ test.describe('Check footer functionality', () => {
     test.beforeEach('Open main inventory page', async ({ page, context }) => {
         app = new Application(page, context);
         await app.setUserCookies(USERS.STANDARD.username);
-        await page.goto('/inventory.html');
+        await app.mainPage.openMainPage();
     });
 
     test('Twitter', async () => {

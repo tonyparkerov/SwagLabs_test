@@ -22,5 +22,5 @@ jobs:
     - name: Publish Test Report
       uses: ctrf-io/github-test-reporter@v1
       with:
-        eport-path: './ctrf/*.json'
+        report-path: './ctrf/*.json'
       if: always()

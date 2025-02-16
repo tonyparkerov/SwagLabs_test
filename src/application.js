@@ -1,6 +1,6 @@
 import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
-import MainPage from "./pages/main.page";
+import MainPage from "./pages/MainPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 

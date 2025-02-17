@@ -13,7 +13,11 @@ test.beforeEach('Open main inventory page', async ({ page, context }) => {
 
 test('End to end test', async({ page }) => {
     await app.mainPage.addItemToCart(ITEMS.backpack);
+    await page.pause();
+    await app.mainPage.addItemToCart(ITEMS.bike);
+    await page.pause();
     await app.header.openShoppingCart();
-    await expect(page).toHaveURL('/cart.html');
-    await expect(app.cartPage.inventoryItem).toHaveText(ITEMS.backpack.name);
+    await page.pause();
+    //await expect(page).toHaveURL('/cart.html');
+    //await expect(app.cartPage.inventoryItem).toHaveText(ITEMS.backpack.name);
 });

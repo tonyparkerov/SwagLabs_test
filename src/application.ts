@@ -3,14 +3,20 @@ import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { BrowserContext, Page } from "@playwright/test";
 
 export default class Application {
-    #page;
-    #context;
+    private page;
+    private context;
+    public loginPage;
+    public mainPage;
+    public cartPage;
+    public header;
+    public footer;
 
-    constructor(page, context) {
-        this.#page = page;
-        this.#context = context;
+    constructor(page: Page, context: BrowserContext) {
+        this.page = page;
+        this.context = context;
         this.loginPage = new LoginPage(page);
         this.mainPage = new MainPage(page);
         this.cartPage = new CartPage(page);
@@ -19,11 +25,11 @@ export default class Application {
     }
 
     async getCookies(){
-        return await this.#context.cookies();
+        return await this.context.cookies();
     }
 
-    async setUserCookies(userName) {
-        await this.#context.addCookies([{
+    async setUserCookies(userName: string) {
+        await this.context.addCookies([{
             name: 'session-username',
             value: userName,
             domain: 'www.saucedemo.com',

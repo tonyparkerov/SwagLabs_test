@@ -1,4 +1,4 @@
-export const USERS = {
+export const USERS: { [key: string]: { username: string; password: string } } = {
     STANDARD: {
         username: 'standard_user',
         password: 'secret_sauce'

@@ -3,7 +3,7 @@ import Application from "../src/application";
 import { USERS } from "../test-data/users";
 
 test.describe('Check footer functionality', () => {
-    let app;
+    let app: Application;
 
     test.beforeEach('Open main inventory page', async ({ page, context }) => {
         app = new Application(page, context);

@@ -1,5 +1,8 @@
 export default class BaseComponent {
-    constructor(page, context) {
+    protected page;
+    protected context;
+    
+    constructor(page: any, context?: any) {
         this.page = page;
         this.context = context;
     }

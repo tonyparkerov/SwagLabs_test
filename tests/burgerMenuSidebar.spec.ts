@@ -3,7 +3,7 @@ import Application from "../src/application";
 import { USERS } from "../test-data/users";
 
 test.describe('Check burger menu sidebar functionality', () => {
-    let app;
+    let app: Application;
 
     test.beforeEach('Open main page', async ({ page, context }) => {
         app = new Application(page, context);

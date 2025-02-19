@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserContext, Page } from "@playwright/test";
+import CheckoutFlow from "./pages/CheckoutFlow";
 
 export default class Application {
     private page;
@@ -13,6 +14,7 @@ export default class Application {
     public cartPage;
     public header;
     public footer;
+    public checkoutFlow;
 
     constructor(page: Page, context: BrowserContext) {
         this.page = page;
@@ -22,6 +24,7 @@ export default class Application {
         this.cartPage = new CartPage(page);
         this.header = new Header(page, context);
         this.footer = new Footer(page, context);
+        this.checkoutFlow = new CheckoutFlow(page);
     }
 
     async getCookies(){

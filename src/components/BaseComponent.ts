@@ -1,4 +1,4 @@
-export default class BaseComponent {
+export default abstract class BaseComponent {
     protected page;
     protected context;
     

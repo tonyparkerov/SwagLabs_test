@@ -1,10 +1,5 @@
+import CheckoutInfoModel from "../../data/models/CheckoutInfoModel";
 import BasePage from "../BasePage";
-
-type CheckoutData = {
-    firstName?: string,
-    lastName?: string,
-    zipCode?: string
-};
 
 export default class CheckoutFirstPage extends BasePage {
     private firstNameInput = this.page.locator('input[data-test="firstName"]');
@@ -13,7 +8,7 @@ export default class CheckoutFirstPage extends BasePage {
     private cancelButton = this.page.locator('button[data-test="cancel"]');
     private continueButton = this.page.locator('[data-test="continue"]')
 
-    async fillInCheckoutData(checkoutData: CheckoutData) {
+    async fillInCheckoutData(checkoutData: CheckoutInfoModel) {
         if (checkoutData.firstName) {
             await this.firstNameInput.fill(checkoutData.firstName);
         }

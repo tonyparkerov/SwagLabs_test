@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
-import Application from "../src/application";
-import { USERS } from "../test-data/users";
+import Application from "../src/Application";
+import { USERS } from "../src/data/users";
 
 test.describe('Check footer functionality', () => {
     let app: Application;

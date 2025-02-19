@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { ITEMS } from "../src/data/items";
-import Application from "../src/Application";
+import Application from "../src/application";
 import { USERS } from "../src/data/users";
 import { validCheckoutInfo } from "../src/data/checkoutData";
 

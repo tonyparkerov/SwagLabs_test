@@ -1,5 +1,5 @@
 import test, { expect } from "@playwright/test";
-import Application from "../src/Application";
+import Application from "../src/application";
 import { USERS } from "../src/data/users";
 
 test.describe('Check burger menu sidebar functionality', () => {

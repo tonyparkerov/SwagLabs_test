@@ -14,6 +14,10 @@ test('End to end test', async({ page, context }) => {
     });
 
     await test.step('Add 3 items to Cart', async () => {
+        const firstItemName = await app.mainPage.parseInventoryNames(0);
+        console.log(`1. in test ${firstItemName}`);
+        console.log('--------------asd-----------')
+        await firstItemName.click();
         await app.mainPage.addItemToCart(ITEMS.backpack);
         await app.mainPage.addItemToCart(ITEMS.bike);
         await app.mainPage.addItemToCart(ITEMS.boltTShirt)
@@ -28,15 +32,22 @@ test('End to end test', async({ page, context }) => {
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('2');
     });
+
+    await test.step('Enter checkout data', async () => {
+        await app.cartPage.checkout();
+        await expect(page).toHaveURL('/checkout-step-one.html');
+        await app.checkoutFlow.firstPage.fillInCheckoutData(validCheckoutInfo);
+    });
+
+    await test.step('Finish checkout flow', async () => {
+        await app.checkoutFlow.firstPage.continue();
+        await expect(page).toHaveURL('/checkout-step-two.html');
+        await app.checkoutFlow.overviewPage.finish();
+        await expect(page).toHaveURL('/checkout-complete.html');
+    });
     
-    //TODO
-    await app.cartPage.checkout();
-    await expect(page).toHaveURL('/checkout-step-one.html');
-    await app.checkoutFlow.firstPage.fillInCheckoutData(validCheckoutInfo);
-    await app.checkoutFlow.firstPage.continue();
-    await app.checkoutFlow.overviewPage.finish();
-    await expect(page).toHaveURL('/checkout-complete.html');
-    await app.checkoutFlow.completePage.backHome();
-    await expect(page).toHaveURL('/inventory.html')
-    //await expect(app.cartPage.inventoryItem).toHaveText(ITEMS.backpack.name);
+    await test.step('Back Home', async () => {
+        await app.checkoutFlow.completePage.backHome();
+        await expect(page).toHaveURL('/inventory.html')
+    });
 });

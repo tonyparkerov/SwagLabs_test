@@ -14,10 +14,7 @@ test('End to end test', async({ page, context }) => {
     });
 
     await test.step('Add 3 items to Cart', async () => {
-        const firstItemName = await app.mainPage.parseInventoryNames(0);
-        console.log(`1. in test ${firstItemName}`);
-        console.log('--------------asd-----------')
-        await firstItemName.click();
+        const allItems = await app.mainPage.parseAllItems();
         await app.mainPage.addItemToCart(ITEMS.backpack);
         await app.mainPage.addItemToCart(ITEMS.bike);
         await app.mainPage.addItemToCart(ITEMS.boltTShirt)

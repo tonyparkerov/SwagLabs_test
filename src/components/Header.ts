@@ -18,7 +18,7 @@ export default class Header extends BaseComponent {
         await this.shoppingCart.click();
     }
 
-    async sortProducts(sortOption: string) {
+    async sortProductsBy(sortOption: string) {
         await this.sortContainer.selectOption(sortOption);
     }
 

@@ -33,15 +33,27 @@ export default class MainPage extends BasePage {
         return arrayOfAllItems;
     }
 
-    private async getItemName(index: number) {
-        return await this.itemNameLocator.nth(index).textContent();
+    private async getItemName(index: number): Promise<string> {
+        const name = await this.itemNameLocator.nth(index).textContent();
+        if (name === null) {
+            throw new Error(`Item name not found at index ${index}`);
+        }
+        return name;
     }
 
-    private async getItemDescription(index: number) {
-        return await this.itemDescriptionLocator.nth(index).textContent();
+    private async getItemDescription(index: number): Promise<string> {
+        const description = await this.itemDescriptionLocator.nth(index).textContent();
+        if (description === null) {
+            throw new Error(`Item description not found at index ${index}`);
+        }
+        return description;
     }
 
-    private async getItemPrice(index: number) {
-        return await this.itemPriceLocator.nth(index).textContent();
+    private async getItemPrice(index: number): Promise<string> {
+        const price = await this.itemPriceLocator.nth(index).textContent();
+        if (price === null) {
+            throw new Error(`Item price not found at index ${index}`);
+        }
+        return price;
     }
 }

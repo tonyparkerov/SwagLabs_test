@@ -28,11 +28,11 @@ function checkSortingByZA(testArray: Item[]): boolean {
 };
 
 function checkSortingByPriceLowToHigh(testArray: Item[]): boolean {
-    const sortedArray = testArray.slice().sort((a, b) => Number(a.price?.replace('$', '')) - Number(b.price?.replace('$', '')));
+    const sortedArray = testArray.slice().sort((a, b) => Number(a.price.replace('$', '')) - Number(b.price.replace('$', '')));
     return JSON.stringify(testArray) === JSON.stringify(sortedArray);
 };
 
 function checkSortingByPriceHighToLow(testArray: Item[]): boolean {
-    const sortedArray = testArray.slice().sort((a, b) => Number(b.price?.replace('$', '')) - Number(a.price?.replace('$', '')));
+    const sortedArray = testArray.slice().sort((a, b) => Number(b.price.replace('$', '')) - Number(a.price.replace('$', '')));
     return JSON.stringify(testArray) === JSON.stringify(sortedArray);
 };

@@ -1,5 +1,5 @@
 import { test, expect } from "../fixtures/fixtures";
-import { ITEMS } from "../src/data/items";
+import { ITEMS } from "../src/data/constants";
 import { validCheckoutInfo } from "../src/data/checkoutData";
 
 test('End to end test', async({ app, page }) => {

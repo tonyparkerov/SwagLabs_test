@@ -1,6 +1,6 @@
 import { test as base } from '@playwright/test';
 import Application from "../src/application";
-import { USERS } from '../src/data/users';
+import { USERS } from '../src/data/constants';
 
 type LoggedInStateFixture = {
     app: Application;

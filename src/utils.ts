@@ -1,4 +1,3 @@
-import test from "node:test";
 import { SORTING_OPTIONS } from "./data/constants";
 import { Item } from "./types";
 

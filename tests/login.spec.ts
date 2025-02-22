@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import Application from '../src/application';
-import { USERS } from '../src/data/users';
+import { USERS } from '../src/data/constants';
 
 test('Check login functionality', async ({ page, context }) => {
   const app = new Application(page, context);

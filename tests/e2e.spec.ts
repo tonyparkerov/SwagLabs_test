@@ -1,17 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../fixtures/fixtures";
 import { ITEMS } from "../src/data/items";
-import Application from "../src/application";
-import { USERS } from "../src/data/users";
 import { validCheckoutInfo } from "../src/data/checkoutData";
 
-test('End to end test', async({ page, context }) => {
-    const app = new Application(page, context);
-
-    await test.step('Login through setting user cookie', async () => {
-        await app.setUserCookies(USERS.STANDARD.username);
-        await app.mainPage.openMainPage();
-        await expect(page).toHaveURL('/inventory.html');
-    });
+test('End to end test', async({ app, page }) => {
 
     await test.step('Add 3 items to Cart', async () => {
         const allItems = await app.mainPage.parseAllItems();

@@ -14,7 +14,7 @@ test('End to end test', async({ app, page }) => {
 
     await test.step('Open cart and remove 1 item', async () => {
         await app.header.openShoppingCart();
-        await expect(page).toHaveURL('/cart.html')
+        await expect(page).toHaveURL(app.cartPage.pagePath);
         await app.cartPage.removeItem(allItems[2])
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('2');
@@ -22,19 +22,19 @@ test('End to end test', async({ app, page }) => {
 
     await test.step('Enter checkout data', async () => {
         await app.cartPage.checkout();
-        await expect(page).toHaveURL('/checkout-step-one.html');
+        await expect(page).toHaveURL(app.checkoutFlow.firstPage.pagePath);
         await app.checkoutFlow.firstPage.fillInCheckoutData(validCheckoutInfo);
     });
 
     await test.step('Finish checkout flow', async () => {
         await app.checkoutFlow.firstPage.continue();
-        await expect(page).toHaveURL('/checkout-step-two.html');
+        await expect(page).toHaveURL(app.checkoutFlow.overviewPage.pagePath);
         await app.checkoutFlow.overviewPage.finish();
-        await expect(page).toHaveURL('/checkout-complete.html');
+        await expect(page).toHaveURL(app.checkoutFlow.completePage.pagePath);
     });
     
     await test.step('Back Home', async () => {
         await app.checkoutFlow.completePage.backHome();
-        await expect(page).toHaveURL('/inventory.html')
+        await expect(page).toHaveURL(app.mainPage.pagePath);
     });
 });

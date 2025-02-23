@@ -11,7 +11,7 @@ export const test = base.extend<LoggedInStateFixture>({
       // Set up the fixture.
       const app = new Application(page, context);
       await app.setUserCookies(USERS.STANDARD.username);
-      await app.mainPage.openMainPage();
+      await app.mainPage.open();
 
       // Use the fixture value in the test.
       await use(app);

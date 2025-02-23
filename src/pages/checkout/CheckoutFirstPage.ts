@@ -2,6 +2,8 @@ import CheckoutInfoModel from "../../data/models/CheckoutInfoModel";
 import BasePage from "../BasePage";
 
 export default class CheckoutFirstPage extends BasePage {
+    public pagePath = '/checkout-step-one.html';
+
     private firstNameInput = this.page.locator('input[data-test="firstName"]');
     private lastNameInput = this.page.locator('input[data-test="lastName"]');
     private zipCodeInput = this.page.locator('input[data-test="postalCode"]');

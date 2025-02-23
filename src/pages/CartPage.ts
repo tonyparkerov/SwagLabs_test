@@ -2,6 +2,8 @@ import { Item } from "../types";
 import BasePage from "./BasePage";
 
 export default class CartPage extends BasePage {
+    public pagePath = '/cart.html';
+
     private cartList = this.page.locator('div[data-test="cart-list"]');
     private inventoryItem = this.page.locator('div[data-test="inventory-item"]');
     private continueShoppingButton = this.page.locator('button[data-test="continue-shopping"]');

@@ -7,7 +7,7 @@ test.describe('Check negative scenarios for login functionality', () => {
     
     test.beforeEach('Initialize app', async ({ page, context }) => {
         app = new Application(page, context);
-        await app.loginPage.goToLoginPage();
+        await app.loginPage.open();
     });
     
     test('Try login without entered credentials', async () => {

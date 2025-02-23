@@ -1,3 +1,4 @@
+import { Item } from "../types";
 import BasePage from "./BasePage";
 
 export default class CartPage extends BasePage {
@@ -6,12 +7,8 @@ export default class CartPage extends BasePage {
     private continueShoppingButton = this.page.locator('button[data-test="continue-shopping"]');
     private checkoutButton = this.page.locator('button[data-test="checkout"]');
 
-    private findRemoveButtonLocator(itemName: any) {
-        return this.page.locator(`button[data-test="remove-${itemName.dataTestValue}"]`)
-    }
-
-    async removeItem(itemName: any) {
-        await this.findRemoveButtonLocator(itemName).click();
+    async removeItem(item: Item) {
+        await this.page.locator(`button[data-test="${item.removeButtonDataTest}"]`).click();
     }
 
     async continueShopping() {

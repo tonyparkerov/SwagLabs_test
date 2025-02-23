@@ -1,14 +1,13 @@
 import { test, expect } from "../fixtures/fixtures";
-import { ITEMS } from "../src/data/constants";
 import { validCheckoutInfo } from "../src/data/checkoutData";
 
 test('End to end test', async({ app, page }) => {
-
+    const allItems = await app.mainPage.inventoryList.parseAllItems();
+    
     await test.step('Add 3 items to Cart', async () => {
-        const allItems = await app.mainPage.parseAllItems();
-        await app.mainPage.addItemToCart(ITEMS.backpack);
-        await app.mainPage.addItemToCart(ITEMS.bike);
-        await app.mainPage.addItemToCart(ITEMS.boltTShirt)
+        await app.mainPage.addItemToCart(allItems[0]);
+        await app.mainPage.addItemToCart(allItems[1]);
+        await app.mainPage.addItemToCart(allItems[2]);
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('3');
     });
@@ -16,7 +15,7 @@ test('End to end test', async({ app, page }) => {
     await test.step('Open cart and remove 1 item', async () => {
         await app.header.openShoppingCart();
         await expect(page).toHaveURL('/cart.html')
-        await app.cartPage.removeItem(ITEMS.boltTShirt)
+        await app.cartPage.removeItem(allItems[2])
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('2');
     });

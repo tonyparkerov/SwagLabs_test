@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserContext, Page } from "@playwright/test";
 import CheckoutFlow from "./pages/CheckoutFlow";
+import Cookie from "./data/models/cookieModel";
 
 export default class Application {
     private page;
@@ -32,11 +33,6 @@ export default class Application {
     }
 
     async setUserCookies(userName: string) {
-        await this.context.addCookies([{
-            name: 'session-username',
-            value: userName,
-            domain: 'www.saucedemo.com',
-            path: '/'
-        }]);
+        await this.context.addCookies([new Cookie(userName)]);
     }
 }

@@ -15,9 +15,6 @@ export const test = base.extend<LoggedInStateFixture>({
 
       // Use the fixture value in the test.
       await use(app);
-  
-      // Clean up the fixture.
-      //await app.removeAll();
     }
   });
   export { expect } from '@playwright/test';

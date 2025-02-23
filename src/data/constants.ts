@@ -21,3 +21,10 @@ export const SORTING_OPTIONS = {
     lohi: 'Price (low to high)',
     hilo: 'Price (high to low)'
 }
+
+export const LOGIN_ERROR_MESSAGES = {
+    withoutUsername: 'Epic sadface: Username is required',
+    withoutPassword: 'Epic sadface: Password is required',
+    wrongCredentials: 'Epic sadface: Username and password do not match any user in this service',
+    lockedOut: 'Epic sadface: Sorry, this user has been locked out.'
+}

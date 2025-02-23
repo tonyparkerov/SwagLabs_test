@@ -65,9 +65,3 @@ Tests run automatically on pull requests to main/master branch. The workflow:
 3. Runs type checks
 4. Executes tests
 5. Publishes test report
-
-For more details, see:
-```yaml:.github/workflows/playwright.yml
-startLine: 1
-endLine: 28
-```

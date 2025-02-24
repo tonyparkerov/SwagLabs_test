@@ -7,7 +7,7 @@ export default class Footer extends BaseComponent {
     private footerCopy = this.page.locator('div[data-test="footer-copy"]');
 
     async openSocialMedia(socialMediaName: string) {
-        const pagePromise = this.context.waitForEvent('page');
+        const pagePromise = this.page.context().waitForEvent('page');
         switch (socialMediaName) {
             case 'twitter':
                 await this.twitterLogo.click();

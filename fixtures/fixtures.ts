@@ -7,9 +7,9 @@ type LoggedInStateFixture = {
 };
 
 export const test = base.extend<LoggedInStateFixture>({
-    app: async ({ page, context }, use) => {
+    app: async ({ page }, use) => {
       // Set up the fixture.
-      const app = new Application(page, context);
+      const app = new Application(page);
       await app.setUserCookies(USERS.STANDARD.username);
       await app.mainPage.open();
 

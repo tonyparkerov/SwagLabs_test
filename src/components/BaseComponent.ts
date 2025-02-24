@@ -1,9 +1,9 @@
+import type { Page } from "@playwright/test";
+
 export default abstract class BaseComponent {
     protected page;
-    protected context;
     
-    constructor(page: any, context?: any) {
+    constructor(page: Page) {
         this.page = page;
-        this.context = context;
     }
 }

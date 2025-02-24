@@ -5,8 +5,8 @@ import { LOGIN_ERROR_MESSAGES, USERS } from '../../src/data/constants';
 test.describe('Check negative scenarios for login functionality', () => {
     let app: Application;
     
-    test.beforeEach('Initialize app', async ({ page, context }) => {
-        app = new Application(page, context);
+    test.beforeEach('Initialize app', async ({ page }) => {
+        app = new Application(page);
         await app.loginPage.open();
     });
     

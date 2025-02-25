@@ -11,4 +11,5 @@ test('Check login functionality', async ({ page }) => {
   await expect(page).toHaveURL(app.mainPage.pagePath);
   expect(cookies[0].name).toEqual('session-username');
   expect(cookies[0].value).toEqual(USERS.STANDARD.username);
+  await expect(page).toHaveScreenshot();
 });

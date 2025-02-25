@@ -4,6 +4,10 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   run-tests:
     timeout-minutes: 60

@@ -34,7 +34,7 @@ jobs:
       if: always()
 
   deploy-report:
-    needs: test
+    needs: run-tests
     runs-on: ubuntu-latest
     if: always()
     environment:

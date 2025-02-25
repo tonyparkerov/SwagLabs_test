@@ -6,5 +6,5 @@ test.fail('Screenshot comparison', async ({ page }) => {
     const app = new Application(page);
     await app.setUserCookies(USERS.VISUAL.username);
     await app.mainPage.open();
-    await expect(page).toHaveScreenshot({fullPage: true, maxDiffPixelRatio: 0.04});
+    await expect(page).toHaveScreenshot({fullPage: true, maxDiffPixelRatio: 0.03});
 });

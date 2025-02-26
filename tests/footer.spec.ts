@@ -4,7 +4,7 @@ test.describe('Check footer functionality', () => {
 
     test('Twitter', async ({ app }) => {
         const newPage = await app.footer.openSocialMedia('twitter');
-        await expect(newPage).toHaveURL('https://x.com/saucelabs?mx=2');
+        await expect(newPage).toHaveURL('https://x.com/saucelabs');
     })
 
     test('Facebook', async ({ app }) => {

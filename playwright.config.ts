@@ -13,7 +13,7 @@ import { BASE_URL } from './src/data/constants';
  */
 module.exports = defineConfig({
   testDir: './tests',
-  snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{arg}{ext}',
+  snapshotPathTemplate: process.env.CI? '{testDir}/__screenshots__/CI/{testFilePath}/{arg}{ext}' : '{testDir}/__screenshots__/local/{testFilePath}/{arg}{ext}',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

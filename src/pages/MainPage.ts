@@ -6,7 +6,9 @@ export default class MainPage extends BasePage {
     public pagePath = '/inventory.html';
     public inventoryList = new InventoryList(this.page);
 
-    async addItemToCart(item: Item) {
-        await this.page.locator(`button[data-test="${item.addToCartButtonDataTest}"]`).click();
+    async addItemToCart(...item: Item[]) {
+        for(let key of item) {
+            await this.page.locator(`button[data-test="${key.addToCartButtonDataTest}"]`).click();
+        }
     }
 }

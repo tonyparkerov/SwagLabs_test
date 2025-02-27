@@ -4,11 +4,12 @@ import { getItemByName } from "../src/utils";
 
 test('End to end test', async({ app, page }) => {
     const allItems = await app.mainPage.inventoryList.parseAllItems();
+    const backpack = getItemByName(allItems, 'Sauce Labs Backpack');
+    const bike = getItemByName(allItems, 'Sauce Labs Bike Light');
+    const tShirt = getItemByName(allItems, 'Sauce Labs Bolt T-Shirt');
     
     await test.step('Add 3 items to Cart', async () => {
-        await app.mainPage.addItemToCart(getItemByName(allItems, 'Sauce Labs Backpack'));
-        await app.mainPage.addItemToCart(getItemByName(allItems, 'Sauce Labs Bike Light'));
-        await app.mainPage.addItemToCart(getItemByName(allItems, 'Sauce Labs Bolt T-Shirt'));
+        await app.mainPage.addItemToCart(backpack, bike, tShirt);
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('3');
     });
@@ -16,7 +17,7 @@ test('End to end test', async({ app, page }) => {
     await test.step('Open cart and remove 1 item', async () => {
         await app.header.openShoppingCart();
         await expect(page).toHaveURL(app.cartPage.pagePath);
-        await app.cartPage.removeItem(getItemByName(allItems, 'Sauce Labs Bolt T-Shirt'))
+        await app.cartPage.removeItem(tShirt);
         const shoppingCartBadgeQuantity = await app.header.getShoppingCartBadgeQuantity();
         expect (shoppingCartBadgeQuantity).toBe('2');
     });

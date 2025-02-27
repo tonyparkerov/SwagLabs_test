@@ -1,6 +1,14 @@
 import { SORTING_OPTIONS } from "./data/constants";
 import { Item } from "./types";
 
+export const getItemByName = (arrayOfAllItems: Item[], name: string): Item => {
+    const item = arrayOfAllItems.find(value => value.name === name);
+    if(item) {
+        return item;
+    }
+    throw new Error(`Item with name "${name}" not found`);    
+};
+
 export const isSortedBy = (sortingOption: typeof SORTING_OPTIONS[keyof typeof SORTING_OPTIONS], testArray: Item[]): boolean => {
     switch (sortingOption) {
         case SORTING_OPTIONS.az:

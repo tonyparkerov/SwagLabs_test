@@ -11,4 +11,18 @@ export default class MainPage extends BasePage {
             await this.page.locator(`button[data-test="${key.addToCartButtonDataTest}"]`).click();
         }
     }
+
+    async removeItemFromCart(...item: Item[]) {
+        for(let key of item) {
+            await this.page.locator(`button[data-test="${key.removeButtonDataTest}"]`).click();
+        }
+    }
+
+    async openItemPageThroughName(itemName: string) {
+        await this.page.getByRole('link', { name: itemName}).click();
+    }
+
+    async openItemPageThroughImage(itemName: string) {
+        await this.page.locator(`img[alt="${itemName}"]`).click();
+    }
 }

@@ -23,6 +23,6 @@ export default class MainPage extends BasePage {
     }
 
     async openItemPageThroughImage(itemName: string) {
-        await this.page.locator(`img[alt="${itemName}"]`).click();
+        await this.page.getByAltText(itemName).click();
     }
 }

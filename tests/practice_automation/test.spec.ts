@@ -53,5 +53,21 @@ test.describe('Set of tests to practice web automation (without POM and etc.)', 
 
     test('Slider', async ({ page }) => {
         await page.goto(`${HOME_PAGE}/slider/`);
+        const slider = page.locator('#slideMe');
+        const currentValue = page.locator('span#value');
+        
+        const box = await slider.boundingBox();
+        const x = box.x;
+        const y = box.y;
+        const width = box.width;
+
+        // Click and drag the slider to a specific position
+        await page.mouse.move(x, y);
+        await page.mouse.down();
+        await page.mouse.move(x + width * 0.75, y); // Move to 75% of slider width
+        await page.mouse.up();
+        
+
+        await expect(currentValue).toHaveText('76');
     });
 });

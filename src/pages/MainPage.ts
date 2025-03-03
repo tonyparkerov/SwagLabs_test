@@ -19,7 +19,7 @@ export default class MainPage extends BasePage {
     }
 
     async openItemPageThroughName(itemName: string) {
-        await this.page.getByRole('link', { name: itemName}).click();
+        await this.page.getByRole('link', { name: itemName}).nth(0).click();
     }
 
     async openItemPageThroughImage(itemName: string) {

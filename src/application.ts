@@ -6,15 +6,17 @@ import Footer from "./components/Footer";
 import type { Page } from "@playwright/test";
 import CheckoutFlow from "./pages/CheckoutFlow";
 import Cookie from "./data/models/cookieModel";
+import ItemPage from "./pages/ItemPage";
 
 export default class Application {
-    private page;
-    public loginPage;
-    public mainPage;
-    public cartPage;
-    public header;
-    public footer;
-    public checkoutFlow;
+    private page: Page;
+    public loginPage: LoginPage;
+    public mainPage: MainPage;
+    public cartPage: CartPage;
+    public header: Header;
+    public footer: Footer;
+    public checkoutFlow: CheckoutFlow;
+    public itemPage: ItemPage;
 
     constructor(page: Page) {
         this.page = page;
@@ -24,6 +26,7 @@ export default class Application {
         this.header = new Header(page);
         this.footer = new Footer(page);
         this.checkoutFlow = new CheckoutFlow(page);
+        this.itemPage = new ItemPage(page);
     }
 
     async getCookies(){

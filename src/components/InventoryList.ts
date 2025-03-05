@@ -1,5 +1,6 @@
 import { Item } from "../types";
 import BaseComponent from "./BaseComponent";
+import { step } from "../misc/step";
 
 export default class InventoryList extends BaseComponent {
     private itemCardLocator = this.page.getByTestId('inventory-item');
@@ -8,6 +9,7 @@ export default class InventoryList extends BaseComponent {
     private itemPriceLocator = this.page.locator('[data-test="inventory-item-price"]');
     private itemAddToCartButtonLocator = this.page.getByText('Add to cart', { exact: true})
 
+    @step()
     async parseAllItems() {
         const arrayOfAllItems: Item[] = [];
         const itemsCount = await this.itemCardLocator.count();

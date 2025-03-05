@@ -1,5 +1,6 @@
 import CheckoutInfoModel from "../../data/models/CheckoutInfoModel";
 import BasePage from "../BasePage";
+import { step } from "../../misc/step";
 
 export default class CheckoutFirstPage extends BasePage {
     public pagePath = '/checkout-step-one.html';
@@ -10,6 +11,7 @@ export default class CheckoutFirstPage extends BasePage {
     private cancelButton = this.page.locator('button[data-test="cancel"]');
     private continueButton = this.page.locator('[data-test="continue"]')
 
+    @step()
     async fillInCheckoutData(checkoutData: CheckoutInfoModel) {
         if (checkoutData.firstName) {
             await this.firstNameInput.fill(checkoutData.firstName);
@@ -22,10 +24,12 @@ export default class CheckoutFirstPage extends BasePage {
         }
     }
 
+    @step()
     async cancel() {
         await this.cancelButton.click();
     }
 
+    @step()
     async continue() {
         await this.continueButton.click();
     }

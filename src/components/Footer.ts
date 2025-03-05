@@ -1,3 +1,4 @@
+import { step } from "../misc/step";
 import BaseComponent from "./BaseComponent";
 
 export default class Footer extends BaseComponent {
@@ -6,6 +7,7 @@ export default class Footer extends BaseComponent {
     private linkedinLogo = this.page.locator('a[data-test="social-linkedin"]');
     private footerCopy = this.page.locator('div[data-test="footer-copy"]');
 
+    @step()
     async openSocialMedia(socialMediaName: string) {
         const pagePromise = this.page.context().waitForEvent('page');
         switch (socialMediaName) {
@@ -26,6 +28,7 @@ export default class Footer extends BaseComponent {
         return newPage;
     }
 
+    @step()
     async getFooterCopy() {
         return this.footerCopy;
     }

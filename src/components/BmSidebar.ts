@@ -2,12 +2,12 @@ import { step } from "../misc/step";
 import BaseComponent from "./BaseComponent";
 
 export default class BmSidebar extends BaseComponent {
-    private burgerMenuSidebar = this.page.locator('div.bm-menu-wrap');
-    private allItemsLink = this.page.locator('a[data-test="inventory-sidebar-link"]');
-    private aboutLink = this.page.locator('a[data-test="about-sidebar-link"]');
-    private logoutLink = this.page.locator('a[data-test="logout-sidebar-link"]');
-    private resetAppStateLink = this.page.locator('a[data-test="reset-sidebar-link"]');
-    private closeIcon = this.page.locator('button#react-burger-cross-btn');
+    private root = this.page.locator('.bm-menu-wrap');
+    private allItemsLink = this.root.locator('a[data-test="inventory-sidebar-link"]');
+    private aboutLink = this.root.locator('a[data-test="about-sidebar-link"]');
+    private logoutLink = this.root.locator('a[data-test="logout-sidebar-link"]');
+    private resetAppStateLink = this.root.locator('a[data-test="reset-sidebar-link"]');
+    private closeIcon = this.root.locator('button#react-burger-cross-btn');
     
     @step()
     async getAllItems() {
@@ -35,7 +35,7 @@ export default class BmSidebar extends BaseComponent {
     }
 
     async isClosed() {
-        const ariaHidden = await this.burgerMenuSidebar.getAttribute('aria-hidden');
+        const ariaHidden = await this.root.getAttribute('aria-hidden');
         return ariaHidden;
     }
 }

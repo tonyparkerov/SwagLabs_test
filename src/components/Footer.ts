@@ -2,10 +2,11 @@ import { step } from "../misc/step";
 import BaseComponent from "./BaseComponent";
 
 export default class Footer extends BaseComponent {
-    private twitterLogo = this.page.locator('a[data-test="social-twitter"]');
-    private facebookLogo = this.page.locator('a[data-test="social-facebook"]');
-    private linkedinLogo = this.page.locator('a[data-test="social-linkedin"]');
-    private footerCopy = this.page.locator('div[data-test="footer-copy"]');
+    private root = this.page.locator('footer[data-test="footer"]');
+    private twitterLogo = this.root.locator('a[data-test="social-twitter"]');
+    private facebookLogo = this.root.locator('a[data-test="social-facebook"]');
+    private linkedinLogo = this.root.locator('a[data-test="social-linkedin"]');
+    private footerCopy = this.root.locator('div[data-test="footer-copy"]');
 
     @step()
     async openSocialMedia(socialMediaName: string) {

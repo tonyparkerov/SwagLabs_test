@@ -3,12 +3,13 @@ import BmSidebar from "./BmSidebar";
 import { step } from "../misc/step";
 
 export default class Header extends BaseComponent {
-    private burgerMenuButton = this.page.locator('button#react-burger-menu-btn');
+    private root = this.page.locator('[data-test="header-container"]');
+    private burgerMenuButton = this.root.locator('button#react-burger-menu-btn');
     public burgerMenuSidebar = new BmSidebar(this.page);
-    private shoppingCart = this.page.locator('[data-test="shopping-cart-link"]');
-    private shoppingCartBadge = this.page.locator('span[data-test="shopping-cart-badge"]');
-    private sortContainer = this.page.locator('[data-test="product-sort-container"]');
-    private backToProductsButton = this.page.locator('button[data-test="back-to-products"]');
+    private shoppingCart = this.root.locator('[data-test="shopping-cart-link"]');
+    private shoppingCartBadge = this.root.locator('span[data-test="shopping-cart-badge"]');
+    private sortContainer = this.root.locator('[data-test="product-sort-container"]');
+    private backToProductsButton = this.root.locator('button[data-test="back-to-products"]');
 
     @step()
     async openBurgerMenu() {

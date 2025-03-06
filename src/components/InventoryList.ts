@@ -3,11 +3,12 @@ import BaseComponent from "./BaseComponent";
 import { step } from "../misc/step";
 
 export default class InventoryList extends BaseComponent {
-    private itemCardLocator = this.page.getByTestId('inventory-item');
-    private itemNameLocator = this.page.locator('.inventory_item_name');
-    private itemDescriptionLocator = this.page.locator('.inventory_item_desc');
-    private itemPriceLocator = this.page.locator('[data-test="inventory-item-price"]');
-    private itemAddToCartButtonLocator = this.page.getByText('Add to cart', { exact: true})
+    private root = this.page.locator('div#inventory_container');
+    private itemCardLocator = this.root.getByTestId('inventory-item');
+    private itemNameLocator = this.root.locator('.inventory_item_name');
+    private itemDescriptionLocator = this.root.locator('.inventory_item_desc');
+    private itemPriceLocator = this.root.locator('[data-test="inventory-item-price"]');
+    private itemAddToCartButtonLocator = this.root.getByText('Add to cart', { exact: true})
 
     @step()
     async parseAllItems() {

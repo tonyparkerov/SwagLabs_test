@@ -1,7 +1,7 @@
 export type Item = {
-    name: string,
-    description: string,
-    price: string,
-    addToCartButtonDataTest: string,
-    removeButtonDataTest: string
+  name: string;
+  description: string;
+  price: string;
+  addToCartButtonDataTest: string;
+  removeButtonDataTest: string;
 };

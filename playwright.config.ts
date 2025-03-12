@@ -1,6 +1,6 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
-import { BASE_URL } from './src/data/constants';
+import { defineConfig, devices } from "@playwright/test";
+import { BASE_URL } from "./src/data/constants";
 
 /**
  * Read environment variables from file.
@@ -12,8 +12,10 @@ import { BASE_URL } from './src/data/constants';
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
-  snapshotPathTemplate: process.env.CI? '{testDir}/__screenshots__/CI/{testFilePath}/{arg}{ext}' : '{testDir}/__screenshots__/local/{testFilePath}/{arg}{ext}',
+  testDir: "./tests",
+  snapshotPathTemplate: process.env.CI
+    ? "{testDir}/__screenshots__/CI/{testFilePath}/{arg}{ext}"
+    : "{testDir}/__screenshots__/local/{testFilePath}/{arg}{ext}",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -23,25 +25,22 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['html'],
-    ['playwright-ctrf-json-reporter', {}]
-  ],
+  reporter: [["html"], ["playwright-ctrf-json-reporter", {}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    testIdAttribute: 'data-test'
+    trace: "on-first-retry",
+    testIdAttribute: "data-test",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
 
     /*{
@@ -82,4 +81,3 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-

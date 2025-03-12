@@ -1,20 +1,20 @@
-import { test as base } from '@playwright/test';
+import { test as base } from "@playwright/test";
 import Application from "../src/application";
-import { USERS } from '../src/data/constants';
+import { USERS } from "../src/data/constants";
 
 type LoggedInStateFixture = {
-    app: Application;
+  app: Application;
 };
 
 export const test = base.extend<LoggedInStateFixture>({
-    app: async ({ page }, use) => {
-      // Set up the fixture.
-      const app = new Application(page);
-      await app.setUserCookies(USERS.STANDARD.username);
-      await app.mainPage.open();
+  app: async ({ page }, use) => {
+    // Set up the fixture.
+    const app = new Application(page);
+    await app.setUserCookies(USERS.STANDARD.username);
+    await app.mainPage.open();
 
-      // Use the fixture value in the test.
-      await use(app);
-    }
-  });
-  export { expect } from '@playwright/test';
+    // Use the fixture value in the test.
+    await use(app);
+  },
+});
+export { expect } from "@playwright/test";

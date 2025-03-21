@@ -2,7 +2,7 @@ import { test, expect } from "../fixtures/fixtures";
 import { validCheckoutInfo } from "../src/data/checkoutData";
 import { getItemByName } from "../src/utils";
 
-test("End to end test", async ({ app, page }) => {
+test("End to end test @Tce04089d", async ({ app, page }) => {
   const allItems = await app.mainPage.inventoryList.parseAllItems();
   const backpack = getItemByName(allItems, "Sauce Labs Backpack");
   const bike = getItemByName(allItems, "Sauce Labs Bike Light");

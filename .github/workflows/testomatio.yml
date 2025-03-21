@@ -28,10 +28,7 @@ jobs:
       - name: Run type checks
         run: npx tsc -p tsconfig.json --noEmit
       - name: Run Playwright tests
-        run: npx playwright test --grep "${{ github.event.inputs.grep }}"
-        env:
-          TESTOMATIO: "${{ github.event.inputs.testomatio }}"
-          TESTOMATIO_RUN: "${{ github.event.inputs.run }}"
+        run: TESTOMATIO="${{ github.event.inputs.testomatio }}" TESTOMATIO_RUN="${{ github.event.inputs.run }}" npx playwright test --grep "${{ github.event.inputs.grep }}"
     # - uses: actions/upload-artifact@v4
     #   if: ${{ !cancelled() }}
     #   with:
